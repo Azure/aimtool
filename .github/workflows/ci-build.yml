@@ -1,0 +1,139 @@
+# Builds and tests the code.
+# Additionally, for pushes to main and GitHub releases, the Chocolatey packages are published to an Azure file share.
+# The version number is always read from version-number.txt.
+# If the workflow has not been triggered by a GitHub release, then a suffix is applied to the version number indicating it's a pre-release.
+# The build can also be triggered on schedule, this results in the chocolatey packages being published.
+
+name: CI Build
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+  release:
+    types: [created]
+  schedule:
+    - cron: '0 2 * * 3'
+
+env:
+  BUILD_TYPE: 'Release'  
+  CHOCO_CONFIG_DIR: 'build/chocolatey'
+  CHOCO_PACKAGE_OUTPUT_DIR: 'choco-package'
+  CHOCO_PACKAGE_REPO_INTERNAL: 'https://www.myget.org/F/aim-dev/api/v2'
+  CHOCO_PACKAGE_REPO_PUBLIC: 'https://www.myget.org/F/aim-dev-public/api/v2'
+  CHOCO_PACKAGE_REPO_FOLDER: 'chocolatey-packages'
+  CHOCO_SRC_DIR: 'choco-src'
+  CODE_COVERAGE_THRESHOLD: 0
+  DOTNET_VERSION: '3.1.200'
+  OUTPUT_DIR: 'dist'    
+  NUGET_SOURCE_NAME: 'AzureIntegrationMigration'  
+  PUBLISHED_PROJECT_FILE: 'src/Microsoft.AzureIntegrationMigration.Tool/Microsoft.AzureIntegrationMigration.Tool.csproj'
+  SCRIPT_MAX_RETRIES: 4
+  SCRIPT_RETRY_SLEEP_IN_SECONDS: 10
+  VERSION_NUMBER_SEM1 : 'NOT SET'
+  VERSION_NUMBER_SEM2 : 'NOT SET'
+  VERSION_NUMBER_SUFFIX_SEM1 : ''
+  VERSION_NUMBER_SUFFIX_SEM2 : ''  
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout from default branch      
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+
+      - name: Checkout from main branch        
+        if: github.event_name == 'schedule'
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      
+      # 2 version numbers are created, semantic versioning 1 for Chocolatey and semantic versioning 2 for NuGet.
+      - name: Set the version number suffix.       
+        if: github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule'
+        shell: bash
+        run: |
+          seconds_at_midnight=$(date --utc -d 'today 00:00:00' +"%s")
+          seconds_now=$(date --utc +"%s")
+          seconds_since_midnight=$((seconds_now - seconds_at_midnight))
+          seconds_since_midnight_padded=`printf %05d $seconds_since_midnight`
+          echo ::set-env name=VERSION_NUMBER_SUFFIX_SEM1::-$(cat ./version-suffix.txt)-$(date --utc +%Y%m%d$seconds_since_midnight_padded)
+          echo ::set-env name=VERSION_NUMBER_SUFFIX_SEM2::-$(cat ./version-suffix.txt).$(date --utc +%Y%m%d$seconds_since_midnight_padded)
+
+      - name: Set the version numbers
+        shell: bash
+        run: |
+          echo ::set-env name=VERSION_NUMBER_SEM1::$(cat ./version-number.txt)${{ env.VERSION_NUMBER_SUFFIX_SEM1 }}
+          echo ::set-env name=VERSION_NUMBER_SEM2::$(cat ./version-number.txt)${{ env.VERSION_NUMBER_SUFFIX_SEM2 }}      
+
+      - name: Update the nuget config with the PAT for the private source
+        run: dotnet nuget update source ${{ env.NUGET_SOURCE_NAME }} --username ${{ secrets.NUGET_PACKAGE_REPO_API_USER }} --password ${{ secrets.NUGET_PACKAGE_REPO_API_SECRET }}
+
+      - name: Restore project dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration ${{ env.BUILD_TYPE }} -p:Version=${{ env.VERSION_NUMBER_SEM2 }}
+
+      - name: Run unit tests with coverage
+        run: dotnet test --filter Category=Unit -p:CollectCoverage=true -p:CoverletOutput=../../${{ env.OUTPUT_DIR }}/tests/coverage/ -p:CoverletOutputFormat=cobertura -p:Threshold=${{ env.CODE_COVERAGE_THRESHOLD }} -p:ExcludeByAttribute=CompilerGeneratedAttribute -p:ExcludeByAttribute=GeneratedCodeAttribute
+
+      - name: Publish the CLI project for Chocolatey
+        run: dotnet publish ${{ env.PUBLISHED_PROJECT_FILE }} -r win-x64 -o ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} --configuration ${{ env.BUILD_TYPE }} -p:Version=${{ env.VERSION_NUMBER_SEM2 }} -p:PublishTrimmed=true
+
+      - name: Create the Chocolatey packages
+        shell: bash
+        run: |
+          mkdir ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}
+
+          find ./${{ env.CHOCO_CONFIG_DIR }} -name "*.nuspec" |
+          while read f
+          do
+            choco pack $f --version=${{ env.VERSION_NUMBER_SEM1 }} --outputdirectory ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}
+          done
+
+      - name: Push the Chocolatey package to the internal repo
+        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        shell: bash
+        run: | 
+          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
+          while read f; do
+            retryCount=0
+            while true; do            
+              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_INTERNAL }} -k ${{ secrets.AIM_CHOCO_INTERNAL_REPO_TOKEN }} && break
+              retryCount=$((retryCount+1))
+              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
+                echo "Retrying the processing of $f"			
+                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
+              else
+                break
+              fi
+            done
+          done
+  
+      - name: Push the Chocolatey package to the publicly shared repo
+        if: github.event_name == 'schedule'
+        shell: bash
+        run: | 
+          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
+          while read f; do
+            retryCount=0
+            while true; do
+              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_PUBLIC }} -k ${{ secrets.AIM_CHOCO_PUBLIC_REPO_TOKEN }} && break
+              retryCount=$((retryCount+1))
+              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
+                echo "Retrying the processing of $f"			
+                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
+              else
+                break
+              fi
+            done
+          done

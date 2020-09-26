@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortStageOptionDescription" xml:space="preserve">
+    <value>Abort at the end of a stage when any exception encountered from a stage runner.  Default is not to abort at the end of a stage.  This option, if used, must be used in conjunction with --no-abort.</value>
+  </data>
+  <data name="AbortStageOptionLong" xml:space="preserve">
+    <value>--abort-stage</value>
+  </data>
+  <data name="ArgumentDelimiterOptionDescription" xml:space="preserve">
+    <value>Specifies a delimiter for a multi-value argument.  Default is a pipe (|) character.</value>
+  </data>
+  <data name="ArgumentDelimiterOptionLong" xml:space="preserve">
+    <value>--arg-delimiter</value>
+  </data>
+  <data name="ArgumentsOptionDescription" xml:space="preserve">
+    <value>Arbitrary arguments that are passed through to stage runners.  Format key=value.  Multi-item values are accepted using a delimiter.  Complex objects are supported by passing JSON string (use single quotes around the argument).</value>
+  </data>
+  <data name="ArgumentsOptionLong" xml:space="preserve">
+    <value>--arg</value>
+  </data>
+  <data name="ArgumentsOptionShort" xml:space="preserve">
+    <value>-a</value>
+  </data>
+  <data name="AssessVerb" xml:space="preserve">
+    <value>assess</value>
+  </data>
+  <data name="AssessVerbDescription" xml:space="preserve">
+    <value>Runs only the stages associated with assessment: Discover, Parse, Analyze, Report.</value>
+  </data>
+  <data name="AzurePrimaryRegionOptionDescription" xml:space="preserve">
+    <value>Specifies the Azure Primary Region to use for resource template rendering, if the templates require the primary region.</value>
+  </data>
+  <data name="AzurePrimaryRegionOptionLong" xml:space="preserve">
+    <value>--primary-region</value>
+  </data>
+  <data name="AzureSecondaryRegionOptionDescription" xml:space="preserve">
+    <value>Specifies the Azure Secondary Region to use for resource template rendering, if the templates require the secondary region as a paired region.</value>
+  </data>
+  <data name="AzureSecondaryRegionOptionLong" xml:space="preserve">
+    <value>--secondary-region</value>
+  </data>
+  <data name="AzureSubscriptionIdOptionDescription" xml:space="preserve">
+    <value>Specifies the Azure Subscription ID to use for resource template rendering, if the templates require the subscription ID.</value>
+  </data>
+  <data name="AzureSubscriptionIdOptionLong" xml:space="preserve">
+    <value>--subscription-id</value>
+  </data>
+  <data name="AzureTargetOptionDescription" xml:space="preserve">
+    <value>Azure Integration Services target environment: Consumption or Ise (Integration Service Environment).</value>
+  </data>
+  <data name="AzureTargetOptionLong" xml:space="preserve">
+    <value>--target</value>
+  </data>
+  <data name="ConversionPathOptionDescription" xml:space="preserve">
+    <value>Path to store the converted output.  Default is the working directory.</value>
+  </data>
+  <data name="ConversionPathOptionLong" xml:space="preserve">
+    <value>--conversion-path</value>
+  </data>
+  <data name="ConversionPathOptionShort" xml:space="preserve">
+    <value>-c</value>
+  </data>
+  <data name="ConvertVerb" xml:space="preserve">
+    <value>convert</value>
+  </data>
+  <data name="ConvertVerbDescription" xml:space="preserve">
+    <value>Runs only the stages associated with conversion: Convert, Verify.</value>
+  </data>
+  <data name="DeploymentEnvOptionDescription" xml:space="preserve">
+    <value>Specifies the deployment environment to use for resource template rendering.  Default is the 'dev' environment.</value>
+  </data>
+  <data name="DeploymentEnvOptionLong" xml:space="preserve">
+    <value>--deployment-env</value>
+  </data>
+  <data name="DeploymentEnvOptionShort" xml:space="preserve">
+    <value>-e</value>
+  </data>
+  <data name="FindPathsOptionDescription" xml:space="preserve">
+    <value>One or more paths to directories containing stage runners.  Default find paths can be specified in the application configuration file (appsettings.json).  This is an additive option, so paths specified in configuration file will be added to by paths specified on the command line.</value>
+  </data>
+  <data name="FindPathsOptionLong" xml:space="preserve">
+    <value>--find-path</value>
+  </data>
+  <data name="FindPathsOptionShort" xml:space="preserve">
+    <value>-f</value>
+  </data>
+  <data name="FindPatternOptionDescription" xml:space="preserve">
+    <value>Specify a search pattern for finding stage runner libraries.  Use * (zero or more chars) and ? (exactly zero or one char) as wildcards.  Default is "*.dll", however, this can be overridden in the application configuration file (appsettings.json).</value>
+  </data>
+  <data name="FindPatternOptionLong" xml:space="preserve">
+    <value>--find-pattern</value>
+  </data>
+  <data name="FindPatternOptionShort" xml:space="preserve">
+    <value>-p</value>
+  </data>
+  <data name="MigrateVerb" xml:space="preserve">
+    <value>migrate</value>
+  </data>
+  <data name="MigrateVerbDescription" xml:space="preserve">
+    <value>Runs all stages associated with migration: Discover, Parse, Analyze, Report, Convert, Verify.</value>
+  </data>
+  <data name="ModelPathOptionDescription" xml:space="preserve">
+    <value>Path to an exported model from a previous assessment.</value>
+  </data>
+  <data name="ModelPathOptionLong" xml:space="preserve">
+    <value>--model</value>
+  </data>
+  <data name="ModelPathOptionShort" xml:space="preserve">
+    <value>-m</value>
+  </data>
+  <data name="NoAbortOptionDescription" xml:space="preserve">
+    <value>Don't abort on first exception encountered from a stage runner and allow subsequent stage runners to continue to run.  Default is false.</value>
+  </data>
+  <data name="NoAbortOptionLong" xml:space="preserve">
+    <value>--no-abort</value>
+  </data>
+  <data name="OutputModelPathDescription" xml:space="preserve">
+    <value>Path to a file that will be created with the saved model.  If the file already exists it will be overwritten.</value>
+  </data>
+  <data name="OutputModelPathLong" xml:space="preserve">
+    <value>--output-model</value>
+  </data>
+  <data name="OutputModelPathShort" xml:space="preserve">
+    <value>-o</value>
+  </data>
+  <data name="SaveStageRunnerStateOptionDescription" xml:space="preserve">
+    <value>Saves the runner execution state to disk before and after each stage runner.</value>
+  </data>
+  <data name="SaveStageRunnerStateOptionLong" xml:space="preserve">
+    <value>--save-state</value>
+  </data>
+  <data name="SaveStageStateOptionDescription" xml:space="preserve">
+    <value>Saves the runner execution state to disk before and after each stage.</value>
+  </data>
+  <data name="SaveStageStateOptionLong" xml:space="preserve">
+    <value>--save-stage-state</value>
+  </data>
+  <data name="StatePathOptionDescription" xml:space="preserve">
+    <value>Path to store run state during execution of the tool.  Default is the working directory.</value>
+  </data>
+  <data name="StatePathOptionLong" xml:space="preserve">
+    <value>--state-path</value>
+  </data>
+  <data name="StatePathOptionShort" xml:space="preserve">
+    <value>-s</value>
+  </data>
+  <data name="TemplateConfigPathOptionDescription" xml:space="preserve">
+    <value>Path to a directory containing the resource template configuration files.  The configuration files are stored as Liquid templates and are rendered by the tool into YAML configuration files.  Default is the working directory unless overridden by a value specified in the application configuration file (appsettings.json).</value>
+  </data>
+  <data name="TemplateConfigPathOptionLong" xml:space="preserve">
+    <value>--template-config-path</value>
+  </data>
+  <data name="TemplateConfigPathOptionShort" xml:space="preserve">
+    <value>-n</value>
+  </data>
+  <data name="TemplatePathOptionDescription" xml:space="preserve">
+    <value>One or more paths to directories containing the resource template files.  The files are stored as Liquid templates and they represent individual artifacts used to build an AIS solution from the source application.  The Liquid syntax is converted by the tool and the rendered output is stored in the conversion path.  Default is the working directory unless overridden by a value specified in the application configuration file (appsettings.json).</value>
+  </data>
+  <data name="TemplatePathOptionLong" xml:space="preserve">
+    <value>--template-path</value>
+  </data>
+  <data name="TemplatePathOptionShort" xml:space="preserve">
+    <value>-t</value>
+  </data>
+  <data name="UniqueDeploymentIdOptionDescription" xml:space="preserve">
+    <value>Specify a unique value to be used in the resource name when generating Azure resources.  Set this to a short value, such as an abbreviated company name.  Default is a random string.  Max length is {0} characters.</value>
+  </data>
+  <data name="UniqueDeploymentIdOptionLong" xml:space="preserve">
+    <value>--unique-deployment-id</value>
+  </data>
+  <data name="VerboseLevelOptionDescription" xml:space="preserve">
+    <value>Specifies the level of verbose logging, if verbose logging is switched on using the -v option.  Use '-' for minimum trace output and '+' for full trace logging.  Default is '-'.</value>
+  </data>
+  <data name="VerboseLevelOptionLong" xml:space="preserve">
+    <value>--verbose-level</value>
+  </data>
+  <data name="VerboseOptionDescription" xml:space="preserve">
+    <value>Output verbose logging.</value>
+  </data>
+  <data name="VerboseOptionLong" xml:space="preserve">
+    <value>--verbose</value>
+  </data>
+  <data name="VerboseOptionShort" xml:space="preserve">
+    <value>-v</value>
+  </data>
+  <data name="VerifyVerb" xml:space="preserve">
+    <value>verify</value>
+  </data>
+  <data name="VerifyVerbDescription" xml:space="preserve">
+    <value>Runs only the stages associated with verification: Verify.</value>
+  </data>
+  <data name="WorkingPathOptionDescription" xml:space="preserve">
+    <value>Change the current working directory to a different path for the tool execution.  Default is current directory.  This option will affect any relative paths specified in other options.</value>
+  </data>
+  <data name="WorkingPathOptionLong" xml:space="preserve">
+    <value>--working-path</value>
+  </data>
+  <data name="WorkingPathOptionShort" xml:space="preserve">
+    <value>-w</value>
+  </data>
+</root>

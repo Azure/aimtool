@@ -1,0 +1,39 @@
+﻿Examples:
+  Specify verbose logging:
+    aim assess -v
+
+  Don't abort at the first exception by a stage runner:
+    aim assess --no-abort
+
+  Abort at the end of a stage if any runner within that stage fails:
+    aim assess --no-abort --abort-stage Discover
+
+  Specify additional find paths:
+    aim assess -f "C:\findpath1" -f "C:\findpath2"
+
+  Change the default pattern for finding stage runners:
+    aim assess -p *MyStageRunners.dll
+
+  Change the working folder:
+    aim assess -w "C:\temp"
+
+  Save state before and after each stage runner:
+    aim assess --save-state
+
+  Save state before and after each stage:
+    aim assess --save-stage-state
+
+  Change the path where state will be stored:
+    aim assess -s "C:\temp\state" --save-state
+
+  Change the default Azure Integration Services target:
+    aim migrate --target Ise
+
+  Export the model during an assessment:
+    aim assess -o "C:\temp\model.json"
+
+  Import the model for a conversion:
+    aim convert -m "C:\temp\model.json"
+
+  Change the path where converted output will be stored:
+    aim convert -c "C:\temp\conversion"

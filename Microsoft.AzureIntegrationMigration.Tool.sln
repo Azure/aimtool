@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AzureIntegrationMigration.Tool", "src\Microsoft.AzureIntegrationMigration.Tool\Microsoft.AzureIntegrationMigration.Tool.csproj", "{4264B153-0089-4615-B21A-3518A20F3CC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9393482C-5045-4833-8308-371FADD61EB5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.runsettings = .runsettings
+		version-number.txt = version-number.txt
+		version-suffix.txt = version-suffix.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Discover", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Discover\Microsoft.AzureIntegrationMigration.Tool.Mocks.Discover.csproj", "{0387E190-29AE-41AC-948E-147F7E062210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Parse", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Parse\Microsoft.AzureIntegrationMigration.Tool.Mocks.Parse.csproj", "{35FFB01D-4FCA-48AB-991D-1D5227785ED9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Analyze", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Analyze\Microsoft.AzureIntegrationMigration.Tool.Mocks.Analyze.csproj", "{D7B86F1D-D830-4615-A402-DDFD2C394D4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Report", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Report\Microsoft.AzureIntegrationMigration.Tool.Mocks.Report.csproj", "{C98CA170-AFDB-41ED-8D33-1853A66D88F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Convert", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Convert\Microsoft.AzureIntegrationMigration.Tool.Mocks.Convert.csproj", "{4EE37E8A-7A9C-4125-8121-8E0EB7DC752A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AzureIntegrationMigration.Tool.Mocks.Verify", "tests\Microsoft.AzureIntegrationMigration.Tool.Mocks.Verify\Microsoft.AzureIntegrationMigration.Tool.Mocks.Verify.csproj", "{EB4B955D-E061-4801-B9D3-859EE7418416}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4264B153-0089-4615-B21A-3518A20F3CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4264B153-0089-4615-B21A-3518A20F3CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4264B153-0089-4615-B21A-3518A20F3CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4264B153-0089-4615-B21A-3518A20F3CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0387E190-29AE-41AC-948E-147F7E062210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0387E190-29AE-41AC-948E-147F7E062210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0387E190-29AE-41AC-948E-147F7E062210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0387E190-29AE-41AC-948E-147F7E062210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FFB01D-4FCA-48AB-991D-1D5227785ED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FFB01D-4FCA-48AB-991D-1D5227785ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FFB01D-4FCA-48AB-991D-1D5227785ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FFB01D-4FCA-48AB-991D-1D5227785ED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B86F1D-D830-4615-A402-DDFD2C394D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B86F1D-D830-4615-A402-DDFD2C394D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B86F1D-D830-4615-A402-DDFD2C394D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B86F1D-D830-4615-A402-DDFD2C394D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98CA170-AFDB-41ED-8D33-1853A66D88F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98CA170-AFDB-41ED-8D33-1853A66D88F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98CA170-AFDB-41ED-8D33-1853A66D88F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98CA170-AFDB-41ED-8D33-1853A66D88F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE37E8A-7A9C-4125-8121-8E0EB7DC752A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE37E8A-7A9C-4125-8121-8E0EB7DC752A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE37E8A-7A9C-4125-8121-8E0EB7DC752A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE37E8A-7A9C-4125-8121-8E0EB7DC752A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4B955D-E061-4801-B9D3-859EE7418416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4B955D-E061-4801-B9D3-859EE7418416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4B955D-E061-4801-B9D3-859EE7418416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4B955D-E061-4801-B9D3-859EE7418416}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95249533-69B2-4E1F-B167-3702BCC89BC2}
+	EndGlobalSection
+EndGlobal
