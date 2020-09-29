@@ -1,4 +1,6 @@
-﻿using System;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AzureIntegrationMigration.Runner.Core;

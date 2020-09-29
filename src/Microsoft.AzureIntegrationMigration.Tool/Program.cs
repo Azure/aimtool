@@ -1,4 +1,6 @@
-﻿using System.CommandLine;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+using System.CommandLine;
 using System.CommandLine.Parsing;
 using System.Threading.Tasks;
 
