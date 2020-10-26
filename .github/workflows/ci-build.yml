@@ -74,8 +74,8 @@ jobs:
           echo ::set-env name=VERSION_NUMBER_SEM1::$(cat ./version-number.txt)${{ env.VERSION_NUMBER_SUFFIX_SEM1 }}
           echo ::set-env name=VERSION_NUMBER_SEM2::$(cat ./version-number.txt)${{ env.VERSION_NUMBER_SUFFIX_SEM2 }}      
 
-      - name: Update the nuget config with the PAT for the private source
-        run: dotnet nuget update source ${{ env.NUGET_SOURCE_NAME }} --username ${{ secrets.NUGET_PACKAGE_REPO_API_USER }} --password ${{ secrets.NUGET_PACKAGE_REPO_API_SECRET }}
+      - name: Update the nuget config with the credentials for the GitHub Package Repository
+        run: dotnet nuget update source ${{ env.NUGET_SOURCE_NAME }} --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Restore project dependencies
         run: dotnet restore
@@ -88,6 +88,19 @@ jobs:
 
       - name: Publish the CLI project for Chocolatey
         run: dotnet publish ${{ env.PUBLISHED_PROJECT_FILE }} -r win-x64 -o ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} --configuration ${{ env.BUILD_TYPE }} -p:Version=${{ env.VERSION_NUMBER_SEM2 }} -p:PublishTrimmed=true
+
+      - name: Create the Chocolatey verification file and copy the license file
+        shell: bash
+        run: |         
+          cp ./LICENSE ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/LICENSE
+          verificationFile=./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION
+          touch $verificationFile
+          find ${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} -type f  | 
+          while read f
+          do
+            filename="$basename -- $f"
+            echo $filename >> $verificationFile
+          done
 
       - name: Create the Chocolatey packages
         shell: bash
