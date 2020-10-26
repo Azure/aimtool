@@ -32,6 +32,10 @@ You can install using Chocolatey via the following command:
 
 `choco install biztalkmigrator`
 
+If that install fails, you can try adding the --pre switch to install the latest pre-release version:
+
+`choco install biztalkmigrator --pre`
+
 Upgrade to a new version with this command:
 
 `choco upgrade biztalkmigrator`
