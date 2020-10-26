@@ -27,6 +27,8 @@ $$ | \_/ $$ |$$ |\$$$$$$$ |$$ |     \$$$$$$$ | \$$$$  |\$$$$$$  |$$ |
 ```
 
 # BizTalk Migrator at-a-glance
+IMPORTANT: This repository was opened publicly on October 26 - the chocolatey package may take a day or two to become available on the chocolatey site.
+
 This repository contains the core CLI implementation for the BizTalk Migrator.
 
 The BizTalk Migrator is a command-line tool that helps migrate BizTalk applications to Azure Integration Services (AIS).
