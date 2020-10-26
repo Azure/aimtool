@@ -9,6 +9,7 @@ This guide has the following sections:
 [Running the tool](#running-the-tool)  
 [Viewing the report](#viewing-the-report)  
 [Understanding the output](#understanding-the-output)  
+[If something goes wrong](#troubleshooting)
 
 ## Prerequisites
 
@@ -98,7 +99,6 @@ Here is a list of useful command-line arguments.  For a full list of arguments p
 
 ### Example commands
 
-
 Specify verbose logging:  
     `aim assess -v`
 
@@ -140,5 +140,31 @@ Depending on the options you have selected, the BizTalk Migrator will generate t
 - Report - a series of HTML files reporting on the migration.
 - State - the underying state model of the tool that describes the source and target applications as a JSON object.
 - Output - the scripts and templates that will create your target applications in Azure.
+
+[Back to top](#top)
+
+## Troubleshooting
+
+### Continue on Error
+
+The tool is configured to stop on error, by default. For example, if you specify an incorrect MSI file name, the tool will generate an error and stop. However, in some cases you may wish to continue.
+
+For example, if you are missing a dependent MSI file (for a common application) but you still want to continue with generating a report, or creating the deployment scripts, you can use the no-abort flag to indicate that the tool should keep executing: 
+    `--no-abort`
+
+An error will still be generated, but the tool will continue on as far as it can.  
+
+### ARM Deployment Issues
+
+Everyone's Azure subscription is different, in terms of what is currently deployed at the time the deployment scripts are executed. 
+In order to ensure that the deployment scripts would execute successfully, and to keep down costs by not automatically deploying expensive resources, we made some assumptions about what was currently deployed.
+Specifically, we assume that:  
+
+- You don't have an existing *Azure App Configuration* using the "Free" SKU in your subscription
+- You don't have an *Integration Account* using the "Free" SKU in the same region in your subscription  
+
+If either of the above are true, then the deployment will fail, as Azure will be unable to deploy an additional "Free" SKU of either of those resource types.  
+
+For information on how to use your own *Azure App Configuration* or *Integration Account* instance, see the [Frequently Asked Questions](frequently-asked-questions.md).
 
 [Back to top](#top)
