@@ -21,8 +21,8 @@ env:
   BUILD_TYPE: 'Release'  
   CHOCO_CONFIG_DIR: 'build/chocolatey'
   CHOCO_PACKAGE_OUTPUT_DIR: 'choco-package'
-  CHOCO_PACKAGE_REPO_INTERNAL: 'https://www.myget.org/F/aim-dev/api/v2'
-  CHOCO_PACKAGE_REPO_PUBLIC: 'https://www.myget.org/F/aim-dev-public/api/v2'
+  CHOCO_PACKAGE_REPO_INTERNAL: 'https://push.chocolatey.org/'
+  CHOCO_PACKAGE_REPO_PUBLIC: 'https://push.chocolatey.org/'
   CHOCO_PACKAGE_REPO_FOLDER: 'chocolatey-packages'
   CHOCO_SRC_DIR: 'choco-src'
   CODE_COVERAGE_THRESHOLD: 0
@@ -100,40 +100,40 @@ jobs:
             choco pack $f --version=${{ env.VERSION_NUMBER_SEM1 }} --outputdirectory ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}
           done
 
-#      - name: Push the Chocolatey package to the internal repo
-#        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
-#        shell: bash
-#        run: | 
-#          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
-#          while read f; do
-#            retryCount=0
-#            while true; do            
-#              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_INTERNAL }} -k ${{ secrets.AIM_CHOCO_INTERNAL_REPO_TOKEN }} && break
-#              retryCount=$((retryCount+1))
-#              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
-#                echo "Retrying the processing of $f"			
-#                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
-#              else
-#                break
-#              fi
-#            done
-#          done
-#  
-#      - name: Push the Chocolatey package to the publicly shared repo
-#        if: github.event_name == 'schedule'
-#        shell: bash
-#        run: | 
-#          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
-#          while read f; do
-#            retryCount=0
-#            while true; do
-#              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_PUBLIC }} -k ${{ secrets.AIM_CHOCO_PUBLIC_REPO_TOKEN }} && break
-#              retryCount=$((retryCount+1))
-#              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
-#                echo "Retrying the processing of $f"			
-#                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
-#              else
-#                break
-#              fi
-#            done
-#          done
+      - name: Push the Chocolatey package to the internal repo
+        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        shell: bash
+        run: | 
+          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
+          while read f; do
+            retryCount=0
+            while true; do            
+              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_INTERNAL }} -k ${{ secrets.AIM_CHOCO_INTERNAL_REPO_TOKEN }} && break
+              retryCount=$((retryCount+1))
+              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
+                echo "Retrying the processing of $f"			
+                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
+              else
+                break
+              fi
+            done
+          done
+  
+      - name: Push the Chocolatey package to the publicly shared repo
+        if: github.event_name == 'schedule'
+        shell: bash
+        run: | 
+          find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
+          while read f; do
+            retryCount=0
+            while true; do
+              choco push $f -s ${{ env.CHOCO_PACKAGE_REPO_PUBLIC }} -k ${{ secrets.AIM_CHOCO_PUBLIC_REPO_TOKEN }} && break
+              retryCount=$((retryCount+1))
+              if (( "$retryCount" <= ${{ env.SCRIPT_MAX_RETRIES }} )); then
+                echo "Retrying the processing of $f"			
+                sleep ${{ env.SCRIPT_RETRY_SLEEP_IN_SECONDS }}
+              else
+                break
+              fi
+            done
+          done
