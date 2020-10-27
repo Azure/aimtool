@@ -89,6 +89,19 @@ jobs:
       - name: Publish the CLI project for Chocolatey
         run: dotnet publish ${{ env.PUBLISHED_PROJECT_FILE }} -r win-x64 -o ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} --configuration ${{ env.BUILD_TYPE }} -p:Version=${{ env.VERSION_NUMBER_SEM2 }} -p:PublishTrimmed=true
 
+      - name: Create the Chocolatey verification file and copy the license file
+        shell: bash
+        run: |         
+          cp ./LICENSE ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/LICENSE
+          verificationFile=./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION
+          touch $verificationFile
+          find ${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} -type f  | 
+          while read f
+          do
+            filename="$basename -- $f"
+            echo $filename >> $verificationFile
+          done
+
       - name: Create the Chocolatey packages
         shell: bash
         run: |
