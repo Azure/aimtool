@@ -31,7 +31,7 @@ in the folder where the report is generated:
 - Source application reports - one per BizTalk application analyzed
 - Target application report - one per target application (each corresponding to a BizTalk application)
 - System application report - contains common functionality comparable to the BizTalk system app
-- Message Bus application report - core functionality replacing elements of the BizTalk infrsatructure
+- Message Bus application report - core functionality replacing elements of the BizTalk infrastructure
 
 ### Viewing the Report
 
