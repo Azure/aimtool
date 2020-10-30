@@ -110,8 +110,8 @@ jobs:
             choco pack $f --version=${{ env.VERSION_NUMBER_SEM1 }} --outputdirectory ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}
           done
 
-      - name: Push the Chocolatey package to the public repo
-        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+      - name: Push the Chocolatey package to the public repo on a GitHub Release
+        if: github.event_name == 'release'
         shell: bash
         run: | 
           find ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_PACKAGE_OUTPUT_DIR }}/ -name "*.nupkg" |
