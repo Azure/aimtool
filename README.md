@@ -1,6 +1,8 @@
 # aimtool
 [![Build Status](https://github.com/azure/aimtool/workflows/CI%20Build/badge.svg)](https://github.com/azure/aimtool/actions)
 
+[![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
+
 ```
 $$$$$$$\  $$\        $$$$$$$$\        $$\ $$\                              
 $$  __$$\ \__|       \__$$  __|       $$ |$$ |                             
@@ -25,8 +27,6 @@ $$ | \_/ $$ |$$ |\$$$$$$$ |$$ |     \$$$$$$$ | \$$$$  |\$$$$$$  |$$ |
                  \$$$$$$  |                                                
                   \______/                                                 
 ```
-
-[![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
 
 # BizTalk Migrator at-a-glance
 IMPORTANT: This repository was opened publicly on October 26 - the chocolatey package may take a day or two to become available on the chocolatey site.
