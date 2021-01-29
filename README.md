@@ -1,6 +1,8 @@
 # aimtool
 [![Build Status](https://github.com/azure/aimtool/workflows/CI%20Build/badge.svg)](https://github.com/azure/aimtool/actions)
 
+[![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
+
 ```
 $$$$$$$\  $$\        $$$$$$$$\        $$\ $$\                              
 $$  __$$\ \__|       \__$$  __|       $$ |$$ |                             
