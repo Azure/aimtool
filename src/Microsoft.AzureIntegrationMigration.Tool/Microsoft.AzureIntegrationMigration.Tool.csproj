@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AzureIntegrationMigration.Runner" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AzureIntegrationMigration.Runner" Version="0.5.2-beta.2021042827726" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
