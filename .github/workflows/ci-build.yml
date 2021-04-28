@@ -23,7 +23,7 @@ env:
   CHOCO_PACKAGE_REPO_FOLDER: 'chocolatey-packages'
   CHOCO_SRC_DIR: 'choco-src'
   CODE_COVERAGE_THRESHOLD: 0
-  DOTNET_VERSION: '3.1.200'
+  DOTNET_VERSION: '5.0.x'
   OUTPUT_DIR: 'dist'    
   NUGET_SOURCE_NAME: 'AzureIntegrationMigration'  
   PUBLISHED_PROJECT_FILE: 'src/Microsoft.AzureIntegrationMigration.Tool/Microsoft.AzureIntegrationMigration.Tool.csproj'
