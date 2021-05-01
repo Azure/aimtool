@@ -5,13 +5,17 @@
     <!-- Note This version will be overriden by the command line. -->
     <version>0.0.1-beta</version>
     <packageSourceUrl>https://github.com/azure/aimtool</packageSourceUrl>
+    <projectSourceUrl>https://github.com/azure/aimtool</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/azure/aimtool/issues</bugTrackerUrl>
     <title>BizTalk Migrator Dependency - Core CLI</title>
     <authors>Microsoft</authors>
     <projectUrl>https://github.com/azure/aimtool</projectUrl>
     <licenseUrl>https://github.com/azure/aimtool/blob/master/LICENSE</licenseUrl>
+    <docsUrl>https://github.com/azure/aimtool#readme</docsUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <tags>biztalkmigrator-cli BizTalk Azure Integration AIM AIS CLI</tags>
     <description>Command Line Interface (CLI) to migrate applications to Microsoft Azure Integration Services.</description>
+    <tags>biztalkmigrator-cli BizTalk Azure Integration AIM AIS CLI</tags>
+    <summary>Command Line Interface (CLI) to migrate applications to Microsoft Azure Integration Services.</summary>
   </metadata>
   <files>
     <file src="..\..\..\dist\choco-src\*" target="tools"/>
