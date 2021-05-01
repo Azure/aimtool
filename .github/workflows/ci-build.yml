@@ -90,8 +90,8 @@ jobs:
       - name: Create the Chocolatey verification file and copy the license file
         shell: bash
         run: |         
-          cp ./LICENSE ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/LICENSE
-          verificationFile=./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION
+          cp ./LICENSE ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/LICENSE.txt
+          verificationFile=./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION.txt
           touch $verificationFile
           find ${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} -type f  | 
           while read f
