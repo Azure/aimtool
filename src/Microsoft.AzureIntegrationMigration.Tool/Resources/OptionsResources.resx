@@ -163,7 +163,7 @@
     <value>--subscription-id</value>
   </data>
   <data name="AzureTargetOptionDescription" xml:space="preserve">
-    <value>Azure Integration Services target environment: Consumption or Ise (Integration Service Environment).</value>
+    <value>Azure Integration Services target environment: Consumption or Standard.</value>
   </data>
   <data name="AzureTargetOptionLong" xml:space="preserve">
     <value>--target</value>

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.
+﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 using System;
 using System.Collections.Generic;
@@ -17,8 +17,8 @@ namespace Microsoft.AzureIntegrationMigration.Tool.Options
         Consumption = 0,
 
         /// <summary>
-        /// The target is the Azure Integration Service Environment.
+        /// The target is the AIS Standard service.
         /// </summary>
-        Ise = 1
+        Standard = 1
     }
 }

@@ -26,8 +26,8 @@
   Change the path where state will be stored:
     aim assess -s "C:\temp\state" --save-state
 
-  Change the default Azure Integration Services target:
-    aim migrate --target Ise
+  Change the default target to Standard Logic Apps:
+    aim migrate --target Standard
 
   Export the model during an assessment:
     aim assess -o "C:\temp\model.json"
