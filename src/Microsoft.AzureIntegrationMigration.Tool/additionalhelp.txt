@@ -26,8 +26,18 @@
   Change the path where state will be stored:
     aim assess -s "C:\temp\state" --save-state
 
+  Change the default target to Consumption Logic Apps:
+  (Note that this is the default option if no target specified)
+    aim migrate --target Consumption
+
+  Change the default target to Consumption Logic Apps and only output application-specific resources:
+    aim migrate --target ConsumptionLite
+
   Change the default target to Standard Logic Apps:
     aim migrate --target Standard
+
+  Change the default target to Standard Logic Apps and only output application-specific resources:
+    aim migrate --target StandardLite
 
   Export the model during an assessment:
     aim assess -o "C:\temp\model.json"

@@ -12,13 +12,23 @@ namespace Microsoft.AzureIntegrationMigration.Tool.Options
     public enum AzureIntegrationServicesTarget
     {
         /// <summary>
-        /// The default target is the AIS consumption service .
+        /// The target is the multi-tenant Logic Apps Consumption environment.
         /// </summary>
         Consumption = 0,
 
         /// <summary>
-        /// The target is the AIS Standard service.
+        /// The target is the single-tenant Logic Apps Standard environment.
         /// </summary>
-        Standard = 1
+        Standard = 1,
+
+        /// <summary>
+        /// The target is the lite-version of the multi-tenant Logic Apps Consumption environment.
+        /// </summary>
+        ConsumptionLite = 2,
+
+        /// <summary>
+        /// The target is the lite-version of the single-tenant Logic Apps Standard environment.
+        /// </summary>
+        StandardLite = 3
     }
 }

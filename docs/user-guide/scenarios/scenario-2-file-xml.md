@@ -23,7 +23,7 @@ To test this scenario, perform the following steps:
    Edit the `azuredeploy.filegateway.opdg.dev.psparameters.json` file (in the same folder) to change the region to the one you'll be using for the scenario deployment.
 4. Locate the *Scenario 2* MSI file in the aimbiztalk repo: `aimbiztalk/scenarios/002-XmlMapping/msi/Aim.XmlMapping.msi`.
 5. Download this MSI, and open a PowerShell prompt/command prompt/Windows Terminal in the same folder.
-6. Run the tool over this msi, specifying the location of the downloaded MSI e.g. `aim migrate -a "microsoft.biztalk.msidiscoverer.msifiles=C:\Temp\SampleMSIs\Aim.BizTalk.XmlMapping.msi" --primary-region "West US" --unique-deployment-id <your unique id>`.
+6. Run the tool over this msi, specifying the location of the downloaded MSI e.g. `aim migrate -a "microsoft.biztalk.msidiscoverer.msifiles=C:\Temp\SampleMSIs\Aim.XmlMapping.msi" --primary-region "West US" --unique-deployment-id <your unique id>`.
 7. Login to your tenant using `az login`.
 8. If you have multiple subscriptions, check that the subscription you wish to use is set as the default subscription - if it isn't, issue this command to switch to the correct subscription: `az account set --subscription "<subscription name or id>"`.
 9. The tool will have created a new folder (with a name similar to aim-xxxxx) in the current folder.

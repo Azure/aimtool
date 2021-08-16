@@ -88,7 +88,7 @@ Here is a list of useful command-line arguments.  For a full list of arguments p
 | -s, --state-path &lt;state-path&gt; | Path to store run state during execution of the tool. Default is the working directory. | 
 | --save-state | Saves the runner execution state to disk before and after each stage runner. | 
 | --save-stage-state | Saves the runner execution state to disk before and after each stage. | 
-| --target &lt;Consumption\|Ise&gt; | Azure Integration Services target environment: Consumption or Ise (Integration Service Environment). | 
+| --target &lt;Consumption\|Standard\|ConsumptionLite\|StandardLite&gt; | Azure Integration Services target environment: Consumption or Standard, Full or Lite mode. | 
 | --subscription-id &gt;subscription-id&gt; | Specifies the Azure Subscription ID to use for resource template rendering, if the templates require the subscription ID. | 
 | --primary-region &lt;primary-region&gt; | Specifies the Azure Primary Region to use for resource template rendering, if the templates require the primary region. |
 | --secondary-region &lt;secondary-region&gt; | Specifies the Azure Secondary Region to use for resource template rendering, if the templates require the secondary region as a paired region. |
