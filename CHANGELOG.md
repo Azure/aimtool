@@ -32,7 +32,7 @@ The **Deploy-All.bat** file will perform the following steps:
 The **Deploy-All.bat** file will perform the following steps:
 - Check that either PowerShell Core (pwsh) or PowerShell v5.2+ is installed (required for JSON merging functionality).
 - Check that the Azure CLI is installed.
-- Check if the logicapp CLI extension is installed (and install it if not - note that this extension is currently in preview).
+- Check if the *logicapp* CLI extension is installed (and install it if not - note that this extension is currently in preview).
 - Check that you can login to the Azure CLI.
 - Prompt you to select a subscription (if you have access to more than one).
 - Check that the *Azure App Configuration* Resource Provider is registered in the selected subscription (and will register it if not).
@@ -71,6 +71,8 @@ There are a number of limitations to Logic Apps Standard support:
 - An Integration Account is still needed (to execute BizTalk Maps, and provide a metadata store to lookup a schema name by BizTalk MessageType). We hope to remove this dependency in the near future.
 - 2 Consumption Logic Apps are still deployed: XmlMessageTranslator (to support BizTalk Maps) and RoutingSlipRouter (to support XmlMessageTranslator).
 - All maps and schemas are deployed to the *System Application* Logic App: Without a centralized integration account, we either have to deploy all schemas/maps to all applications OR deploy them to a common Logic App. Note that this only applies to Full deployments (not Lite). Also note that Schemas and Maps are additionally deployed to an Integration Account for both Standard and StandardLite targets (for the time being - see above).
+- The preview version of the Azure CLI *logicapp* extension is being used. When this extension is released to GA, the tool will be updated to reflect this.
+- The Azure CLI *logicapp* extension doesn't allow for adding maps or schema artifacts to an existing Logic App. This means that a *StandardLite* deployment will not add any Schemas/Maps to the System Application Logic App. This does not pose a problem for Maps, at this time, as those are deployed to an Integration Account (and aren't used by the System Application). However, schema validation may have issues (i.e. the *xmlmessagevalidator* workflow) as the schemas won't be found. In this case, you will need to manually upload those schemas to the System Application Logic App.
 
 ### Visual Studio Code Support
 Yes, you can open any of the Logic Apps in the Visual Studio Code designer, although you need to configure local settings and parameters files in order to do so.
@@ -84,12 +86,12 @@ We are working on local support, but there are a few changes needed to the local
 ### Useful things to know
 - Because parameters in a Standard Logic App are shared across all workflows, we prefix each unique parameter with the name of the workflow. e.g. if there are 2 workflows "workflow1" and "workflow2" that both have a parameter called "scenarioName", there would be 2 parameters: "workflow1.scenarioName" and "workflow2.scenarioName".
 - A single "Workflow Standard 1" (WS1) App Service Plan is created - you can scale this up or down to suit your needs.
-- Built-in connector triggers/actions are used where possible e.g. ServiceBus Publish/Subscribe. Managed API Connections are used where there is no built-in equivalent.
+- Built-in connector triggers/actions are used where possible, e.g. ServiceBus Publish/Subscribe. Managed API Connections are used where there is no built-in equivalent.
 
 ## 3) New "Lite" Targets
 The standard deployment deploys all common resources as well as application-specific resources: MessageBus (inc. API Management, App Config, Key Vault, Storage, App Insights, Function Apps, etc.); System Application (ServiceBus, SystemApplication workflows); and applications (Receive Location workflows, Send Port workflows, Orchestration workflows, Subscriber workflows).
-The release adds support for new "Lite" targets, which only deploy the applications parts above i.e. it assumes that the MessageBus and SystemApplication resources have already been deployed.
-This means that before you can perform a "Lite" deployment you need to have performed a full deployment (for the correct target - Standard or Consumption).
+The release adds support for new "Lite" targets, which only deploy the applications parts abov, i.e. it assumes that the MessageBus and SystemApplication resources have already been deployed.
+This means that before you can perform a "Lite" deployment, you need to have performed a full deployment (for the correct target - Standard or Consumption).
 
 This becomes useful when you want to deploy or convert BizTalk Applications one-at-a-time, or you want to redeploy an application without having to redeploy all the common resources.
 
@@ -102,7 +104,7 @@ or:
 
 `aim migrate -a "microsoft.biztalk.msidiscoverer.msifiles=C:\Temp\SampleMSIs\Aim.HttpJsonOrch.msi" --primary-region "West US" --target ConsumptionLite --unique-deployment-id dep1`
 
-Note that the deployment script will warn you that you're using a "Lite" deployment, and that you need to have first performed a full deployment *using the same unique deployment id*.
+Note that the deployment script will warn you that you're using a "Lite" deployment, and that you need to have first performed a full deployment *using the same unique deployment ID*.
 
 ![Deployment of StandardLite Target](./docs/images/new-deploy-script-standardlite-sml.png)
 
@@ -111,6 +113,14 @@ This release adds support for the SFTP Adapter (i.e. FTP with SSH, as opposed to
 
 Note that early support for the MQ and WCF-SP Adapters will be in the next release, due out soon.
 You may notice that if you assess/convert a BizTalk MSI file which uses the WCF-SAP Adapter, then it will be marked as supported, although you will see errors/warnings during conversion as the adapter workflow template files are missing.
+
+## 5) Configuration Cache Updater
+A Full deployment now includes a Logic App (called *configcacheupdater*) which updates the APIM cache whenever a *ConfigurationEntry*, *RoutingProperty* or *RoutingSlip* is changed in *Azure App Configuration*.
+
+It does this by using EventGrid to subscribe to the *KeyValueModified* event type, on the Event Grid topic for Azure App Configuration. It then calls the appropriate API Management API, with a query string parameter of "clearCache=true".
+
+Note that regardless of Target (i.e. Consumption or Standard), a Consumption Logic App is used for this functionality: this is because there is no ManagedIdentity support for the Event Grid trigger in Standard (yet).
+If you choose the *Standard* target, a *configcacheupdater* workflow is deployed to the MessageBus Standard Logic App, although it doesn't work (as it attempts to use Managed Identity authentication - a Failed run will be present in the Trigger History with an Authentication error). It was felt it was better to leave this deployed for when Managed Identity is supported.
 
 # v0.5.2 - October 30, 2020
 - Minor bug fixes
