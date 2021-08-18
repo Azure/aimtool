@@ -13,4 +13,4 @@ Before you an install the BizTalk Migrator you will need to check you have the f
 
 - Azure CLI
 - Active Azure subscription
-- Windows PowerShell 7
+- Windows PowerShell 7 or PSCore

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.
+﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 using System;
 using System.Collections.Generic;
@@ -12,13 +12,23 @@ namespace Microsoft.AzureIntegrationMigration.Tool.Options
     public enum AzureIntegrationServicesTarget
     {
         /// <summary>
-        /// The default target is the AIS consumption service .
+        /// The target is the multi-tenant Logic Apps Consumption environment.
         /// </summary>
         Consumption = 0,
 
         /// <summary>
-        /// The target is the Azure Integration Service Environment.
+        /// The target is the single-tenant Logic Apps Standard environment.
         /// </summary>
-        Ise = 1
+        Standard = 1,
+
+        /// <summary>
+        /// The target is the lite-version of the multi-tenant Logic Apps Consumption environment.
+        /// </summary>
+        ConsumptionLite = 2,
+
+        /// <summary>
+        /// The target is the lite-version of the single-tenant Logic Apps Standard environment.
+        /// </summary>
+        StandardLite = 3
     }
 }

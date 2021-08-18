@@ -1,7 +1,7 @@
 # aimtool
 [![Build Status](https://github.com/azure/aimtool/workflows/CI%20Build/badge.svg)](https://github.com/azure/aimtool/actions)
 
-[![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
+# Check the [Change Log](./CHANGELOG.md) for the latest updates
 
 ```
 $$$$$$$\  $$\        $$$$$$$$\        $$\ $$\                              
@@ -28,6 +28,7 @@ $$ | \_/ $$ |$$ |\$$$$$$$ |$$ |     \$$$$$$$ | \$$$$  |\$$$$$$  |$$ |
                   \______/                                                 
 ```
 
+[![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
 # BizTalk Migrator at-a-glance
 IMPORTANT: This repository was opened publicly on October 26 - the chocolatey package may take a day or two to become available on the chocolatey site.
 
@@ -76,7 +77,7 @@ Full documentation is available here: [Documentation](./docs/README.md).
 
 - Parse BizTalk exported MSI files, build a model of all BizTalk artifacts.
 - Report on everything found in MSI files.
-- Handle these adapters: File; FTP; HTTP.
+- Handle these adapters: File; FTP; HTTP; SFTP.
 - Handle these pipelines:
     - XmlReceive
     - XmlTransmit

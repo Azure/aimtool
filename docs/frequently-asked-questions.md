@@ -69,8 +69,8 @@ We're working on it, and this will appear soon after the public preview. You'll 
 - **A LogicApp failed, why does it show as successful?**  
   We use ACKs and NACKs to track success/failure states (as does BizTalk). Only the initiating Logic App will show a Success or Failure state e.g. the *File Receive Adapter* for a Receive port; and a *Topic Subscriber* for a Send Port. All other Logic Apps are intermediaries, and oif they have either successfully generated an ACK/NACK or successfully passed one to the caller, then they will be marked as a successful run.  
   
-- **Do you support the new Functions-based Logic Apps runtime?**  
-  No, not yet. This tool was well underway before we started development on the new runtime. Support will come, however. We're not sure yet whether we'll output a separate set of templates for use with VS Code and containers/portal, or stick with ARM templates but running on the new Logic Apps engine. Watch this space, we'll let you know when we have more to say.
+- **Do you support the new Standard Logic Apps runtime?**  
+  Yes we do, check the [Change Log](..\CHANGELOG.md) for more information.
     
 - **Can I run a converted application locally using the new runtime?**  
   Possibly yes, although we haven't tested it. The biggest issue is lack of *Azure App Configuration* support in a local environment. Everything else (Logic Apps, Functions, API Management) has a local equivalent. We're looking at what the best options are for this.
