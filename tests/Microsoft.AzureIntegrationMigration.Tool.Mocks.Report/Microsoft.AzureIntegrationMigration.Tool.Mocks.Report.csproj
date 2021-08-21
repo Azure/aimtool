@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AzureIntegrationMigration.Runner" Version="0.5.2-beta.2021042827726" />
+    <PackageReference Include="Microsoft.AzureIntegrationMigration.Runner" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
   </ItemGroup>
 
