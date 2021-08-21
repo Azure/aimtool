@@ -3,6 +3,21 @@
 # v1.0.0 - August 17, 2021
 This is a major release, adding support for Logic Apps Standard, new deployment scripts, a new adapter, and the ability to deploy only application resources.
 
+## Deployment of v1.0.0
+- Deployment is performed via chocolatey - [chocolatey installation instructions](https://chocolatey.org/install)
+
+- If you have an earlier version installed, remove it first using this command:
+`choco uninstall biztalkmigrator -x --force`
+
+- To deploy this new version, use this command:
+`choco install biztalkmigrator --version 1.0.0`
+
+- If you wish to upgrade an existing installation, run this command:
+`choco upgrade biztalkmigrator biztalkmigrator-cli biztalkmigrator-azure --version 1.0.0`.
+Then open an elevated PowerShell terminal and execute: `C:\ProgramData\chocolatey\lib\biztalkmigrator\tools\chocolateyinstall.ps1` (assuming Chocolatey is deployed to default location)
+
+## In this release:
+
 ## 1) New Deployment Scripts
 Previously, deployment was handled by the *Deploy-All.ps1* and *TearDown-All.ps1* PowerShell scripts.
 These scripts ran unattended, using Azure CLI commands, and assumed the user had already selected the correct subscription for deployment.
