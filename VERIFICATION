@@ -6,7 +6,7 @@ This package contains a number of assemblies (DLL) files, along with dependent f
 This file lists their SHA256 checksums.
 
 There is no other source for installation of these files, other than Chocolatey: 
-The files are built and packaged and uploaded to Chocolatey; other than referenced files (e.g. .NET Core), they do currently reside in any other public source.
+The files are built and packaged and uploaded to Chocolatey; other than referenced files (e.g. .NET Core), they do not currently reside in any other public source.
 Therefore, it is not possible to download an installer to compare checksums.
 
 However, the checksums in here are generated as part of the build process,
