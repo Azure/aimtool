@@ -1,7 +1,7 @@
 # aimtool
 [![Build Status](https://github.com/azure/aimtool/workflows/CI%20Build/badge.svg)](https://github.com/azure/aimtool/actions)
 
-# Check the [Change Log](./CHANGELOG.md) for the latest updates
+# v1.0.0 Released - Check the [Change Log](./CHANGELOG.md) for more information and installation instructions
 
 ```
 $$$$$$$\  $$\        $$$$$$$$\        $$\ $$\                              
@@ -30,8 +30,6 @@ $$ | \_/ $$ |$$ |\$$$$$$$ |$$ |     \$$$$$$$ | \$$$$  |\$$$$$$  |$$ |
 
 [![Survey](./docs/images/biztalk-migrator-questionnaire.png)](https://aka.ms/biztalkmigrationsurvey)
 # BizTalk Migrator at-a-glance
-IMPORTANT: This repository was opened publicly on October 26 - the chocolatey package may take a day or two to become available on the chocolatey site.
-
 This repository contains the core CLI implementation for the BizTalk Migrator.
 
 The BizTalk Migrator is a command-line tool that helps migrate BizTalk applications to Azure Integration Services (AIS).
