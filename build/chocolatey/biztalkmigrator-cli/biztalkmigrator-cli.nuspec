@@ -4,10 +4,11 @@
     <id>biztalkmigrator-cli</id>
     <!-- Note This version will be overriden by the command line. -->
     <version>0.0.1-beta</version>
-    <packageSourceUrl>https://github.com/azure/aimtool</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Azure/aimtool/blob/main/build/chocolatey/biztalkmigrator-cli/biztalkmigrator-cli.nuspec</packageSourceUrl>
     <projectSourceUrl>https://github.com/azure/aimtool</projectSourceUrl>
     <bugTrackerUrl>https://github.com/azure/aimtool/issues</bugTrackerUrl>
     <title>BizTalk Migrator Dependency - Core CLI</title>
+    <owners>probertdaniel,345paul,valrobb</owners>
     <authors>Microsoft</authors>
     <projectUrl>https://github.com/azure/aimtool</projectUrl>
     <licenseUrl>https://github.com/azure/aimtool/blob/master/LICENSE</licenseUrl>

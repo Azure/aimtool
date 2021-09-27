@@ -1,0 +1,21 @@
+VERIFICATION
+Verification is intended to assist Chocolatey moderators and the Chocolatey community
+in verifying that this package's contents are trustworthy.
+
+This package contains a number of assemblies (DLL) files, along with dependent files.
+This file lists their SHA256 checksums.
+
+There is no other source for installation of these files, other than Chocolatey: 
+The files are built and packaged and uploaded to Chocolatey; other than referenced files (e.g. .NET Core), they do not currently reside in any other public source.
+Therefore, it is not possible to download an installer to compare checksums.
+
+However, the checksums in here are generated as part of the build process,
+and reflect the files that are packaged and submitted to Chocolatey.
+
+It is still worthwhile comparing the checksums in this file to the ones for the files that have been installed by Chocolatey on your local system.
+
+You can use one of the following methods to obtain the checksum from a local file:
+  - Use powershell function 'Get-Filehash'
+  - Use chocolatey utility 'checksum.exe'
+
+File 'LICENSE.txt' is obtained from <https://github.com/Azure/aimtool/blob/main/LICENSE>
