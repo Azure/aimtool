@@ -91,13 +91,14 @@ jobs:
         shell: bash
         run: |         
           cp ./LICENSE ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/LICENSE.txt
-          verificationFile=./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION.txt
-          touch $verificationFile
+          cp ./VERIFICATION ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION.txt
+          echo "Checksums for the files in the package are:" >> ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION.txt
           find ${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }} -type f  | 
           while read f
           do
-            filename="$basename -- $f"
-            echo $filename >> $verificationFile
+            filename="$(basename $f) [$f]"
+            filehash=$(sha256sum $f | awk '{print $1}')
+            echo "$filename -- $filehash" >> ./${{ env.OUTPUT_DIR }}/${{ env.CHOCO_SRC_DIR }}/VERIFICATION.txt
           done
 
       - name: Create the Chocolatey packages
